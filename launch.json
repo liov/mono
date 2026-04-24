@@ -1,0 +1,140 @@
+{
+	// 使用 IntelliSense 了解相关属性。
+	// 悬停以查看现有属性的描述。
+	// 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "flutter:app:debug",
+			"cwd": "${workspaceFolder}/hoper/client/app",
+			"request": "launch",
+			"type": "dart",
+			"program": "lib/main.dart",
+			"flutterMode": "debug"
+		},
+		{
+			"name": "flutter:app:profile",
+			"cwd": "${workspaceFolder}/hoper/client/app",
+			"request": "launch",
+			"type": "dart",
+			"program": "lib/main.dart",
+			"flutterMode": "profile"
+		},
+		{
+			"name": "go:hoper",
+			"cwd": "${workspaceFolder}/hoper/server/go",
+			"request": "launch",
+			"type": "go",
+			"program": "${workspaceFolder}/hoper/server/go/main.go",
+			"args": [
+				"-c",
+				"config/config.toml"
+			],
+			"env": {
+				"OTEL_EXPORTER_OTLP_METRICS_ENDPOINT": "http://8.222.139.120:8428/opentelemetry/v1/metrics",
+				"OTEL_EXPORTER_OTLP_LOGS_ENDPOINT": "http://8.222.139.120:9428/insert/opentelemetry/v1/logs",
+				"OTEL_EXPORTER_OTLP_TRACES_ENDPOINT": "http://8.222.139.120:10428/insert/opentelemetry/v1/traces"
+			}
+		},
+		{
+			"name": "go:cherry",
+			"cwd": "${workspaceFolder}/hoper/thirdparty/cherry/_example",
+			"request": "launch",
+			"type": "go",
+			"program": "${workspaceFolder}/hoper/thirdparty/cherry/_example/user"
+		},
+		{
+			"name": "go:pick:std",
+			"cwd": "${workspaceFolder}/hoper/thirdparty/pick/_example/std",
+			"request": "launch",
+			"type": "go",
+			"program": "${workspaceFolder}/hoper/thirdparty/pick/_example/std"
+		},
+		{
+			"name": "go:pick:gin",
+			"cwd": "${workspaceFolder}/hoper/thirdparty/pick/_example/gin",
+			"request": "launch",
+			"type": "go",
+			"program": "${workspaceFolder}/hoper/thirdparty/pick/_example/gin"
+		},
+		{
+			"name": "go:pick:fiber",
+			"cwd": "${workspaceFolder}/hoper/thirdparty/pick/_example/fiber",
+			"request": "launch",
+			"type": "go",
+			"program": "${workspaceFolder}/hoper/thirdparty/pick/_example/fiber"
+		},
+		{
+			"name": "rust:rfv",
+			"cwd": "${workspaceFolder}/hoper/server/rust/rfv",
+			"request": "launch",
+			"type": "lldb",
+			"cargo": {
+				"args": [
+					"build",
+					"--bin",
+					"rfv"
+				]
+			}
+		},
+		{
+			"name": "rust:message",
+			"cwd": "${workspaceFolder}/hoper/server/rust/message",
+			"request": "launch",
+			"type": "lldb",
+			"cargo": {
+				"args": [
+					"build",
+					"--bin",
+					"message"
+				]
+			}
+		},
+		{
+			"name": "vue:web",
+			"cwd": "${workspaceFolder}/hoper/client/web",
+			"request": "launch",
+			"type": "msedge",
+			"url": "http://localhost:3000",
+			"webRoot": "${workspaceFolder}/hoper/client/web/src",
+			"sourceMapPathOverrides": {
+				"webpack:///./src/*": "${webRoot}/*",
+				"node_modules/*": "${workspaceFolder}/hoper/client/web/node_modules/*"
+			},
+			"sourceMaps": true,
+			"preLaunchTask": "web:dev"
+		},
+		{
+			"name": "uniapp:dev",
+			"cwd": "${workspaceFolder}/hoper/client/uniapp",
+			"request": "launch",
+			"type": "msedge",
+			"url": "http://localhost:9000",
+			"webRoot": "${workspaceFolder}/hoper/client/uniapp/src",
+			"sourceMapPathOverrides": {
+				"webpack:///./src/*": "${webRoot}/*",
+				"node_modules/*": "${workspaceFolder}/hoper/client/uniapp/node_modules/*"
+			},
+			"sourceMaps": true,
+			"preLaunchTask": "uniapp:dev"
+		},
+		{
+			"type": "go",
+			"request": "launch",
+			"name": "go:toolbox:dir",
+			"cwd": "${workspaceFolder}/toolbox/server",
+			"program": "${fileDirname}",
+		},
+		{
+			"type": "go",
+			"request": "launch",
+			"name": "go:toolbox:file",
+			"mode": "debug",
+			"cwd": "${workspaceFolder}/toolbox/server",
+			"program": "${file}",
+			"windows": {
+				"program": "${fileDirname}/${fileBasename}"
+			}
+		}
+	]
+}
