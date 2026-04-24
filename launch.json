@@ -5,20 +5,12 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "flutter:app:debug",
+			"name": "flutter:app",
 			"cwd": "${workspaceFolder}/hoper/client/app",
 			"request": "launch",
 			"type": "dart",
 			"program": "lib/main.dart",
-			"flutterMode": "debug"
-		},
-		{
-			"name": "flutter:app:profile",
-			"cwd": "${workspaceFolder}/hoper/client/app",
-			"request": "launch",
-			"type": "dart",
-			"program": "lib/main.dart",
-			"flutterMode": "profile"
+			"flutterMode": "${input:flutterMode}"
 		},
 		{
 			"name": "go:hoper",
@@ -44,25 +36,11 @@
 			"program": "${workspaceFolder}/hoper/thirdparty/cherry/_example/user"
 		},
 		{
-			"name": "go:pick:std",
-			"cwd": "${workspaceFolder}/hoper/thirdparty/pick/_example/std",
+			"name": "go:pick",
+			"cwd": "${workspaceFolder}/hoper/thirdparty/pick/_example/${input:pickBackend}",
 			"request": "launch",
 			"type": "go",
-			"program": "${workspaceFolder}/hoper/thirdparty/pick/_example/std"
-		},
-		{
-			"name": "go:pick:gin",
-			"cwd": "${workspaceFolder}/hoper/thirdparty/pick/_example/gin",
-			"request": "launch",
-			"type": "go",
-			"program": "${workspaceFolder}/hoper/thirdparty/pick/_example/gin"
-		},
-		{
-			"name": "go:pick:fiber",
-			"cwd": "${workspaceFolder}/hoper/thirdparty/pick/_example/fiber",
-			"request": "launch",
-			"type": "go",
-			"program": "${workspaceFolder}/hoper/thirdparty/pick/_example/fiber"
+			"program": "${workspaceFolder}/hoper/thirdparty/pick/_example/${input:pickBackend}"
 		},
 		{
 			"name": "rust:rfv",
@@ -136,5 +114,21 @@
 				"program": "${fileDirname}/${fileBasename}"
 			}
 		}
-	]
+	],
+	"inputs": [
+    {
+      "id": "flutterMode",
+      "type": "pickString",
+      "description": "请选择flutter运行模式",
+      "options": ["debug", "profile", "release"],
+      "default": "debug"
+    },
+	{
+      "id": "pickBackend",
+      "type": "pickString",
+      "description": "请选择后端",
+      "options": ["std", "gin", "fiber"],
+      "default": "std"
+    }
+  ]
 }
